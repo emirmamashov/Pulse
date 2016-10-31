@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col width-30>
+          <ion-title>
+            <img ion-fixed src="/android_asset/www/assets/images/logo/logo6.png" width="40px"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Мой список
+          </ion-title>
+        </ion-col>
+
+        <ion-col width-60>
+          <ion-searchbar icon-only placeholder="поиск"></ion-searchbar>
+        </ion-col>
+
+        <ion-col width-10>
+          <ion-buttons end>
+            <button ion-button color="light">
+              <ion-icon name="cart"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Мой первый список
+      <h3 item-right>12</h3>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-checkbox color="secondary" checked="true"></ion-checkbox>
+      <ion-label>
+        Головная боль
+        <p>Ugh. As if.</p>
+      </ion-label>
+
+      <button ion-button color="primary" item-right>Добавить</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox color="secondary" checked="true"></ion-checkbox>
+      <ion-label>
+        Головная боль2
+        <p>Ugh. As if.</p>
+      </ion-label>
+      <h3 item-right>12</h3>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button color="secondary" (click)="doCreateNewList()" item-right>Добавить новый</button>
+</ion-content>

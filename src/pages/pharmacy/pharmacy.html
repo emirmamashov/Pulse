@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col width-30>
+          <ion-title>
+            <img ion-fixed src="/android_asset/www/assets/images/logo/logo6.png" width="40px"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Аптеки
+          </ion-title>
+        </ion-col>
+
+        <ion-col width-10>
+          <ion-buttons end>
+            <button ion-button color="light" (click)="viewFilterPage()">
+              <ion-icon name="funnel"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Аптеки
+      <h3 item-right>{{pharmacies.count}}</h3>
+    </ion-list-header>
+    <div *ngFor="let pharmacy of pharmacies.results">
+      <ion-item>
+        <button ion-button color="royal" clear item-left large>
+          <ion-icon name="add-circle" color="secondary"></ion-icon>
+        </button>
+        <ion-label (click)="viewMap(pharmacy.id, pharmacy.position)">
+          {{pharmacy.name}}
+          <p>{{pharmacy.company}}</p>
+        </ion-label>
+        <h3 item-right>{{pharmacy.count}}</h3>
+        <img item-right src="/android_asset/www/assets/images/icons/32x32/14.png" width="30px"/>
+
+      </ion-item>
+      <div #map id="{{pharmacy.id}}" class="map" isLoad="0" style="display: none;"></div>
+    </div>
+
+    <ion-item>
+      cityId: <h3>{{filterForPharmy.cityId}}</h3>
+      regionId: <h3>{{filterForPharmy.regionId}}</h3>
+      countryId: <h3>{{filterForPharmy.countryId}}</h3>
+      companyId: <h3>{{filterForPharmy.companyId}}</h3>
+      openhoursId: <h3>{{filterForPharmy.openhoursId}}</h3>
+    </ion-item>
+<!--
+    <ion-item>
+      <button ion-button color="royal" clear item-left large>
+        <ion-icon name="add-circle" color="secondary"></ion-icon>
+      </button>
+      <ion-label (click)="viewMap('map2')">
+        Головная боль
+        <p>Ugh. As if.</p>
+      </ion-label>
+      <h3 item-right>12</h3>
+      <img item-right src="/android_asset/www/assets/images/icons/32x32/14.png" width="30px"/>
+    </ion-item>
+    <div #map id="map2" class="map" isload="0" style="display: none;"></div>-->
+
+  </ion-list>
+</ion-content>
