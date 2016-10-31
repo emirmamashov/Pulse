@@ -1,0 +1,154 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      P U L S E
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home" padding>
+  <div *ngIf="drug" class="selection">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-66>
+          <h2 style="color: #84cc34">{{drug.name}}</h2>
+        </ion-col>
+        <!--<ion-col text-right>
+          <button color="primary" ion-button  block>Купить</button>
+        </ion-col>-->
+      </ion-row>
+      <p style="font-size: smaller" class="text">
+        <span style="font-weight: bold">Фасовка:</span> {{drug.form}}<br/>
+        <span style="font-weight: bold">Форма выпуска:</span>1-{{drug.form}} {{drug.dosage}}
+      </p>
+      <ion-row>
+        <ion-col>
+          <img src="/android_asset/www/assets/images/icons/32x32/9.png" width="25px"/>
+          <img src="/android_asset/www/assets/images/icons/32x32/10.png" width="25px"/>
+        </ion-col>
+        <ion-col text-right>
+          <img src="/android_asset/www/assets/images/icons/32x32/4.png" width="25px"/>
+          <img src="/android_asset/www/assets/images/icons/32x32/6.png" width="25px"/>
+        </ion-col>
+      </ion-row>
+      <div padding>
+        <button style="background-color: #c2dd42; width:100%" ion-button  block>Купить</button>
+      </div>
+
+      <ion-list>
+        <ion-item text-center>
+          <div (click)="doViewDisplay($event, 'description')">
+            <p style="color: #ef7f1a; display: none;" id="off_description">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+            <h2 style="color:#2b2a29">Описание</h2>
+            <p style="color: #84cc34" id="on_description">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+          </div>
+          <br/>
+          <div id="description" isload="0" style="display: none;" class="details">
+            <div *ngIf="detailsOfDrug && detailsOfDrug.drug && detailsOfDrug.drug.descriptions">
+              <div *ngFor="let description of detailsOfDrug.drug.descriptions">
+                <h3 class="re">{{description.name}}</h3>
+                <p style="font-size: smaller">
+                  {{description.text}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div (click)="doViewDisplay($event, 'geolocation')">
+            <p style="color: #ef7f1a; display: none;" id="off_geolocation">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+            <h2 style="color:#2b2a29">Геолакация</h2>
+            <p style="color: #84cc34" id="on_geolocation">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+          </div>
+          <br/>
+          <div id="geolocation" isload="0" style="display: none;" class="details">
+            <div *ngIf="detailsOfDrug && detailsOfDrug.id">
+              <h3 class="re">Местоположения</h3>
+              <br/>
+              <div #map id="details_{{detailsOfDrug.id}}" class="map" isLoad="0"></div>
+            </div>
+          </div>
+        </ion-item>
+
+        <ion-item  text-center>
+          <div (click)="doViewDisplay($event, 'analog')">
+            <p style="color: #ef7f1a; display: none;" id="off_analog">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+            <h2 style="color:#2b2a29">Аналоги</h2>
+            <p style="color: #84cc34" id="on_analog">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+          </div>
+          <br/>
+          <div id="analog" isload="0" style="display: none;" class="details">
+            <h3 class="re">Аналоги лекарств по вашему симптому</h3>
+            <br/>
+            <ion-card>
+              <ion-row no-padding>
+                <ion-col>
+                  <h2 style="color: #9dc618">{{drug.name}}</h2>
+                  <ion-card-content>
+                    <p style="font-size: smaller">
+                      <span style="font-weight: bold">Фасовка:</span> {{drug.form}}<br/>
+                      <span style="font-weight: bold">Форма выпуска:</span>1-{{drug.form}} {{drug.dosage}}
+                    </p>
+                  </ion-card-content>
+                </ion-col>
+                <ion-col text-right>
+                  <h2 item-right  style="color: #9dc618; font-weight: bold">{{drug.price}}{{drug.currency}}</h2>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+          </div>
+        </ion-item>
+
+        <ion-item text-center>
+          <div (click)="doViewDisplay($event, 'delivery')">
+            <p style="color: #ef7f1a; display: none;" id="off_delivery">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+            <h2 style="color:#2b2a29">Доставка</h2>
+            <p style="color: #84cc34" id="on_delivery">
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+              <ion-icon name="ios-radio-button-on"></ion-icon>
+            </p>
+          </div>
+          <br/>
+          <div id="delivery" isload="0" style="display: none;" class="details">
+            <h3 class="re">Также вы можете купить<br/>
+              лекарство с доставкой на дом
+            </h3>
+            <br/>
+          </div>
+        </ion-item>
+
+      </ion-list>
+    </ion-grid>
+  </div>
+  <button ion-button (click)="popView()">Назад</button>
+</ion-content>

@@ -1,0 +1,17 @@
+.tutorial-page {
+  background-color: #0c4d69;
+}
+.card-md {
+  box-shadow: 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.14), 0 1px 0.5px -0.5px rgba(0, 0, 0, 0.2), 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.12);
+}
+ion-card img {
+  display: inline;
+  width: auto;
+}
+.button-md-light {
+  color: #ffffff;
+  background-color: transparent;
+}
+.button-md-light:hover:not(.disable-hover) {
+  background-color: transparent;
+}

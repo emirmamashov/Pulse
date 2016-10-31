@@ -1,0 +1,75 @@
+  <ion-header *ngIf="drugs">
+    <ion-toolbar>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-10>
+            <ion-title>
+              <img ion-fixed src="/android_asset/www/assets/images/logo/logo6.png" width="40px"/>
+            </ion-title>
+          </ion-col>
+
+          <ion-col width-67>
+            <ion-searchbar (ionInput)="search($event)" icon-only placeholder="поиск" value="{{searchVal}}"></ion-searchbar>
+          </ion-col>
+
+          <ion-col width-20>
+            <ion-buttons end>
+              <button ion-button color="light" (click)="textToSpeech()">
+                <ion-icon name="mic"></ion-icon>
+              </button>
+              <button ion-button color="light" (click)="openFilter()">
+                <ion-icon name="funnel"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content *ngIf="drugs">
+    <ion-list>
+      <ion-list-header>
+        Лекарство
+        <h3 item-right>{{drugs.count}}</h3>
+      </ion-list-header>
+      <ion-card *ngFor="let drug of drugs.results" (click)="itemTapped($event, drug)">
+        <ion-row no-padding>
+          <ion-col>
+            <h2 style="color: #9dc618">{{drug.name}}</h2>
+            <ion-card-content>
+              <p style="font-size: smaller">
+                <span style="font-weight: bold">Фасовка:</span> {{drug.form}}<br/>
+                <span style="font-weight: bold">Форма выпуска:</span>1-{{drug.form}} {{drug.dosage}}
+              </p>
+            </ion-card-content>
+          </ion-col>
+          <ion-col text-right>
+            <h2 item-right  style="color: #9dc618; font-weight: bold">{{drug.price}}{{drug.currency}}</h2>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-list>
+  </ion-content>
+
+
+
+<ion-content class="tutorial-page" *ngIf="!drugs">
+  <ion-slides pager>
+    <ion-slide>
+      <img id="logo" src="/android_asset/www/assets/images/logo/Logo2.png" style="width: 60%;"/>
+      <ion-row>
+        <ion-col width-80>
+          <ion-searchbar (ionInput)="search($event)" icon-only placeholder="поиск"></ion-searchbar>
+        </ion-col>
+        <ion-col width-10>
+          <ion-buttons end>
+            <button ion-button color="light" (click)="textToSpeech()">
+              <ion-icon name="mic"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

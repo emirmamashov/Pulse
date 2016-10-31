@@ -1,0 +1,64 @@
+
+<ion-content>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="/android_asset/www/assets/images/logo/Logo1.png" width="40px">
+    </ion-avatar>
+    <h2>Байкеш</h2>
+    <p>Tell me about yourself.</p>
+  </ion-item>
+
+  <ion-toolbar [color]="isAndroid ? 'primary' : 'light'" no-border-top>
+    <ion-segment [(ngModel)]="setting" [color]="isAndroid ? 'light' : 'primary'">
+      <ion-segment-button value="address">
+        Адрес
+      </ion-segment-button>
+      <ion-segment-button value="history">
+        История покупок
+      </ion-segment-button>
+      <ion-segment-button value="setting-profile">
+        Мои списки
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="setting">
+    <ion-list *ngSwitchCase="'address'">
+      <ion-item>
+        <h2>Kyrgyzstan</h2>
+        <p>Bishkek</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'history'">
+      <ion-item>
+        <h2>История закупок</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'setting-profile'">
+
+      <h3>Изменить пароль</h3>
+
+      <ion-list>
+
+        <ion-item>
+          <ion-input type="password" #newPassword name="new_password1" id="new_password1" placeholder="Пароль"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" #confirmPassword name="new_password2" id="new_password2" placeholder="Потвердите пароль"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <div padding>
+        <button ion-button block (click)="doChangePass(newPassword, confirmPassword)">Изменить</button>
+      </div>
+
+
+    </ion-list>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Фильтр
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home" padding>
+  <ion-item>
+    <ion-label>Компания: </ion-label>
+    <ion-select cancelText="Отмена" okText="Выбрать" (ionChange)="doSetSelected($event, 'company')">
+      <ion-option value="1">Неман</ion-option>
+      <ion-option value="2">Неман2</ion-option>
+      <ion-option *ngIf="filterForPharmy && filterForPharmy.companyId" value="{{filterForPharmy.companyId}}">неман выбранный</ion-option>
+    </ion-select>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Часы работы: </ion-label>
+    <ion-select cancelText="Отмена" okText="Выбрать" (ionChange)="doSetSelected($event, 'openhours')">
+      <ion-option value="1">8</ion-option>
+      <ion-option value="2">12</ion-option>
+      <ion-option *ngIf="filterForPharmy && filterForPharmy.openhoursId" value="{{filterForPharmy.openhoursId}}">выбранный</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Страна: </ion-label>
+    <ion-select cancelText="Отмена" okText="Выбрать" (ionChange)="doSetSelected($event, 'country')">
+      <ion-option value="1">Кыргызстан</ion-option>
+      <ion-option value="2">Россия</ion-option>
+      <ion-option *ngIf="filterForPharmy && filterForPharmy.countryId" value="{{filterForPharmy.countryId}}">выбранный</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Регион: </ion-label>
+    <ion-select cancelText="Отмена" okText="Выбрать" (ionChange)="doSetSelected($event, 'region')">
+      <ion-option value="1">Чуй</ion-option>
+      <ion-option value="2">Баткен</ion-option>
+      <ion-option *ngIf="filterForPharmy && filterForPharmy.regionId" value="{{filterForPharmy.regionId}}">выбранный</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Город: </ion-label>
+    <ion-select cancelText="Отмена" okText="Выбрать" (ionChange)="doSetSelected($event, 'city')">
+      <ion-option value="1">Бишкек</ion-option>
+      <ion-option value="2">Москва</ion-option>
+      <ion-option *ngIf="filterForPharmy && filterForPharmy.cityId" value="{{filterForPharmy.cityId}}">выбранный</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button ion-button (click)="popView()">Отмена</button>
+  <button ion-button (click)="popView()">Установить</button>
+</ion-content>
